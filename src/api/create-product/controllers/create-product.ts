@@ -49,6 +49,7 @@ export default {
       };
       const newProduct = await strapi.documents("api::product.product").create({
         data: productData,
+        status: "published"
       });
 
       const uploadedFiles = await strapi.plugins.upload.services.upload.upload({
@@ -72,6 +73,7 @@ export default {
             },
             Category: true,
           },
+          status: "published"
         });
 
       ctx.body = updatedProduct;
