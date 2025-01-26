@@ -32,7 +32,7 @@ export default {
         .documents("api::category.category")
         .findFirst({
           filters: {
-            id: Category,
+            documentId: Category,
           },
         });
 
