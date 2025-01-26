@@ -29,6 +29,7 @@ export default {
           Country: sendingData.country,
           City: sendingData.city,
         },
+        status: "published",
       });
 
       for (const item of Products) {
