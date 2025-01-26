@@ -28,10 +28,13 @@ export default {
 
       // Asegúrate de que `files` sea un arreglo
       const filesArray = Array.isArray(files) ? files : [files];
-
       const existingCategory = await strapi
         .documents("api::category.category")
-        .findOne(Category);
+        .findFirst({
+          filters: {
+            id: Category,
+          },
+        });
 
       if (!existingCategory) {
         return ctx.badRequest("La categoría no existe.");
