@@ -1,0 +1,5 @@
+/**
+ * recommendations service
+ */
+
+export default () => ({});

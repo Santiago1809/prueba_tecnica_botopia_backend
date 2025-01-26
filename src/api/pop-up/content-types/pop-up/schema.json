@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pop_ups",
+  "info": {
+    "singularName": "pop-up",
+    "pluralName": "pop-ups",
+    "displayName": "PopUp"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "ButtonText": {
+      "type": "string"
+    },
+    "Active": {
+      "type": "boolean"
+    },
+    "Url": {
+      "type": "string"
+    }
+  }
+}

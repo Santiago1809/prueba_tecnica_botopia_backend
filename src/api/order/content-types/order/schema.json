@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "Orders"
+    },
+    "PaymentMethod": {
+      "type": "enumeration",
+      "enum": [
+        "card",
+        "paypal"
+      ],
+      "default": "card"
+    },
+    "Stage": {
+      "type": "enumeration",
+      "enum": [
+        "Received",
+        "Packing",
+        "Sended",
+        "Delivered",
+        "Canceled"
+      ],
+      "default": "Received"
+    },
+    "TotalPrice": {
+      "type": "decimal"
+    },
+    "DeliveryAddress": {
+      "type": "string"
+    },
+    "Country": {
+      "type": "string"
+    },
+    "City": {
+      "type": "string"
+    },
+    "Products": {
+      "type": "json"
+    }
+  }
+}
