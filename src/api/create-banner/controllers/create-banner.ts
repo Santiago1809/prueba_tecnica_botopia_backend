@@ -33,6 +33,7 @@ export default {
           Url,
           ButtonText,
         },
+        status: "published",
       });
 
       const uploadedFiles = await strapi.plugins.upload.services.upload.upload({
@@ -56,6 +57,7 @@ export default {
               fields: ["url"],
             },
           },
+          status: "published",
         });
 
       ctx.body = updatedBanner;
