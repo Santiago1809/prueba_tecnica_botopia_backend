@@ -129,7 +129,6 @@ export default {
             ) {
               throw new Error("Quantity property not found");
             }
-            console.log(product["documentId"]);
 
             const fetchedProduct = await strapi
               .documents("api::product.product")
