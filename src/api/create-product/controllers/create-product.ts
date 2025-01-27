@@ -32,10 +32,10 @@ export default {
         .documents("api::category.category")
         .findFirst({
           filters: {
-            documentId: Category,
+            Name: Category,
           },
         });
-
+      console.log(existingCategory);
       if (!existingCategory) {
         return ctx.badRequest("La categoría no existe.");
       }
@@ -49,7 +49,7 @@ export default {
       };
       const newProduct = await strapi.documents("api::product.product").create({
         data: productData,
-        status: "published"
+        status: "published",
       });
 
       const uploadedFiles = await strapi.plugins.upload.services.upload.upload({
@@ -73,7 +73,7 @@ export default {
             },
             Category: true,
           },
-          status: "published"
+          status: "published",
         });
 
       ctx.body = updatedProduct;
