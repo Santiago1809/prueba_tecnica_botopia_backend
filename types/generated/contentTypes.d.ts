@@ -380,7 +380,7 @@ export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Active: Schema.Attribute.Boolean;
+    Active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     ButtonText: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -506,7 +506,7 @@ export interface ApiPopUpPopUp extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Active: Schema.Attribute.Boolean;
+    Active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     ButtonText: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
