@@ -27,7 +27,7 @@ export default {
   deleteUser: async (ctx) => {
     try {
       const { user } = ctx.state;
-      const { user_role, documentId } = user;
+      const { user_role } = user;
 
       if (user_role !== "ADMIN") {
         ctx.status = 403;
