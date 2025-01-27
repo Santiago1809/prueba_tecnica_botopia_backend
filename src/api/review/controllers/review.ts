@@ -26,6 +26,7 @@ export default factories.createCoreController(
           },
         },
       });
+      console.log(response);
 
       ctx.body = response;
     },
@@ -34,16 +35,24 @@ export default factories.createCoreController(
 
       const product = await strapi.documents("api::product.product").findOne({
         documentId: data.product,
-      })
+      });
+      const user = await strapi
+        .documents("plugin::users-permissions.user")
+        .findFirst({
+          filters: {
+            email: data.user,
+          },
+        });
+      console.log(user);
 
       await strapi.documents("api::review.review").create({
         data: {
           product: product.id,
-          user: data.user,
+          user: user.id,
           Text: data.Text,
         },
-        status: "published"
-      })
+        status: "published",
+      });
       const response = await strapi.entityService.findMany(
         "api::review.review",
         {
