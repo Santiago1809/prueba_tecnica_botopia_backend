@@ -28,7 +28,8 @@
       "multiple": false
     },
     "Active": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     }
   }
 }

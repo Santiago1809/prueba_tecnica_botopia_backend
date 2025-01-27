@@ -18,7 +18,8 @@
       "type": "string"
     },
     "Active": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "Url": {
       "type": "string"
