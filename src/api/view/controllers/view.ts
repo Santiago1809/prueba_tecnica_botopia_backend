@@ -9,7 +9,6 @@ export default factories.createCoreController(
   ({ strapi }) => ({
     async create(ctx) {
       const { data } = ctx.request.body;
-      console.log(data);
 
       const product = await strapi.documents("api::product.product").findOne({
         documentId: data.product,

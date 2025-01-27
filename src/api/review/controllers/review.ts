@@ -26,8 +26,6 @@ export default factories.createCoreController(
           },
         },
       });
-      console.log(response);
-
       ctx.body = response;
     },
     async create(ctx) {
@@ -43,7 +41,6 @@ export default factories.createCoreController(
             email: data.user,
           },
         });
-      console.log(user);
 
       await strapi.documents("api::review.review").create({
         data: {
