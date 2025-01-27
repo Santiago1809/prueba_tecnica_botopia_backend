@@ -82,25 +82,34 @@ export default {
         sort: { createdAt: "desc" },
         limit: 100,
       });
+      
       for (const sale of sales) {
-        const productsArray = Array.isArray(sale.Products)
-          ? (sale.Products as { documentId: string; quantity: number }[])
-          : [];
-        const productsPromises = productsArray.map(async (product) => {
-          const fetchedProduct = await strapi
-            .documents("api::product.product")
-            .findOne({
-              documentId: (product as { documentId: string }).documentId,
-              select: ["documentId", "Name", "Price"],
-            });
-          return {
-            documentId: fetchedProduct.documentId || "",
-            Name: fetchedProduct.Name,
-            Price: fetchedProduct.Price,
-            quantity: product.quantity,
-          };
-        });
-        sale.Products = await Promise.all(productsPromises);
+        if (Array.isArray(sale.Products)) {
+          const productsPromises = sale.Products.map(async (product) => {
+            if (
+              typeof product !== "object" ||
+              product === null ||
+              !("quantity" in product)
+            ) {
+              throw new Error("Quantity property not found");
+            }
+            
+            const fetchedProduct = await strapi
+              .documents("api::product.product")
+              .findOne({
+                documentId: product.documentId as string,
+                select: ["documentId", "Name", "Price"],
+              });
+              
+            return {
+              documentId: fetchedProduct.documentId || "",
+              Name: fetchedProduct.Name,
+              Price: fetchedProduct.Price,
+              quantity: product.quantity,
+            };
+          });
+          sale.Products = await Promise.all(productsPromises);
+        }
       }
       ctx.body = sales;
     } catch (err) {
