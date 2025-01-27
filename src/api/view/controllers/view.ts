@@ -17,7 +17,7 @@ export default factories.createCoreController(
         .documents("plugin::users-permissions.user")
         .findFirst({
           filters: {
-            id: data.user,
+            email: data.user,
           },
         });
 
