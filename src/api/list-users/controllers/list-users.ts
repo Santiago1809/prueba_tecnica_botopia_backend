@@ -6,7 +6,7 @@ export default {
   getUsers: async (ctx) => {
     try {
       const { user } = ctx.state;
-      const { user_role, documentId } = user;
+      const { user_role } = user;
 
       if (user_role !== "ADMIN") {
         ctx.status = 403;
@@ -17,11 +17,6 @@ export default {
         .documents("plugin::users-permissions.user")
         .findMany({
           fields: ["id", "display_name", "email", "user_role", "username"],
-          filters: {
-            documentId: {
-              $ne: documentId,
-            },
-          },
         });
 
       ctx.body = users;
