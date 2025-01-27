@@ -136,7 +136,6 @@ export default {
                 documentId: product["documentId"] as string,
                 select: ["documentId", "Name", "Price"],
               });
-            console.log(fetchedProduct);
             return {
               documentId: fetchedProduct.documentId || "",
               Name: fetchedProduct.Name,

@@ -35,7 +35,6 @@ export default {
             Name: Category,
           },
         });
-      console.log(existingCategory);
       if (!existingCategory) {
         return ctx.badRequest("La categoría no existe.");
       }
